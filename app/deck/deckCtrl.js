@@ -6,11 +6,14 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		});
 	};
 
+
 	$scope.drawCard = function () {
 		deckService.drawCard($scope.deckId).then(function (response) {
 			$scope.newPile = response.data.cards[0].image;
 			console.log(response.data.cards[0].image);
-			if ($scope.newPile.typeof === undefined) {
+			$scope.cardNum = response.data.remaining;
+			console.log($scope.cardNum);
+			if ($scope.cardNum === 0) {
 				deckService.shuffle($scope.deckId).then(function (response) {
 					$scope.cardShuffle = response;
 					// console.log(response);
