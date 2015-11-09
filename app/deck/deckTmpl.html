@@ -1,11 +1,16 @@
 <wrapper>
 	<button ng-click="newGame()">New Game</button>
 
-	<div>
-		<img ng-click="drawCard()" src="http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg"
-		alt="">
-		</img>
-	
-	<img ng-src="{{newPile}}" alt="">
-	</div>
+	<container>
+		<div>
+			<img ng-click="drawCard()" src="http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg" alt="">
+			</img>
+
+			<img ng-show="showNewPile" ng-src="{{newPile}}" alt="">
+		</div>
+		<div>
+			<img ng-src="{{pileOne}}" alt="">
+			<img ng-src="{{pileTwo}}" alt="">
+		</div>
+	</container>
 </wrapper>

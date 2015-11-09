@@ -20,4 +20,18 @@ angular.module('solitaire').service('deckService', function ($http) {
                         url: 'http://deckofcardsapi.com/api/deck/' + deckId + '/shuffle/'
                 });
         };
+
+        this.firstPile = function (deckId) {
+                return $http({
+                        method: 'GET',
+                        url: 'http://deckofcardsapi.com/api/deck/' + deckId + '/draw/?count=1'
+                });
+        };
+
+        this.secondPile = function (deckId) {
+                return $http({
+                        method: 'GET',
+                        url: 'http://deckofcardsapi.com/api/deck/' + deckId + '/draw/?count=2'
+                });
+        };        
 });
