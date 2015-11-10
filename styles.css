@@ -5,9 +5,52 @@
 	background-color: 008000;
 	
 }*/
+/*
+.menu {
+	margin-left: 75%;
+	background-color: black;
+}*/
 
-img {
+
+
+img, .card {
 	width: 130px;
 	height: 180px;
 	border-radius: 5px;
+	float: left;
+}
+
+
+.clear {
+	clear: left;
+}
+
+.row2 {
+	position: relative;
+	top: -160px;
+}
+
+.row3 {
+	position: relative;
+	top: -320px;
+}
+
+.row4 {
+	position: relative;
+	top: -480px;
+}
+
+.row5 {
+	position: relative;
+	top: -640px;
+}
+
+.row6 {
+	position: relative;
+	top: -800px;
+}
+
+.row7 {
+	position: relative;
+	top: -960px;
 }
