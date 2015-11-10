@@ -57,12 +57,12 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 					} else if ($scope.piles.pile2.length < 2) {
 						$scope.piles.pile2.push(response.data.cards[i]);
 					} else if ($scope.piles.pile1.length < 1) {
-						$scope.piles.pile1.push(response.data.cards[i], response.data.deck_id);
+						$scope.piles.pile1.push(response.data.cards[i]);
 					}
 				}
 				console.log($scope.piles.pile1);
 				console.log($scope.deckId);
-				// console.log($scope.piles);
+				console.log($scope.piles);
 				
 				deckService.draw($scope.deckId, 24).then(function (response) {
 					$scope.shufflePile = response.data.cards;
@@ -145,4 +145,16 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		// 	});
 		// });
 	};
+	
+	
+	$scope.cardHide = function (pile, index, card) {
+		console.log();
+		if ((pile.length -1) === index) {
+			return card.image;
+		} else {
+			return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+		}
+	};
+	
+	
 });

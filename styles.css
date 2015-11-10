@@ -57,7 +57,7 @@ li a {
 	border-radius: 5px;
 }
 
-/*The Game Vie w*/
+/*The Game View*/
 
 .entireGame {
 	margin-left: 20px;
@@ -81,7 +81,28 @@ img, .card {
 	float: left;
 }
 
+.clear {
+	clear: both;
+}
 
+/*card positions*/
+
+.cardContainer {
+	position: absolute;
+	
+}
+
+.pile {
+	position: relative;
+	width: 130px;
+	height: 180px;
+	float: left;
+}
+
+
+
+
+/*
 .row2 {
 	position: relative;
 	top: -160px;
@@ -121,4 +142,4 @@ img, .card {
 	position: relative;
 	top: -960px;
 	float: right;
-}
+}*/

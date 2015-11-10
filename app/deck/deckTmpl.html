@@ -14,11 +14,70 @@
 			<img ng-src="{{revealPile[(revealPile.length - 1)].image}}" alt="">
 		</div>
 	</div>
+	
+	
+<div class="clear"></div>
+
+
+	<div class="pile1 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile1 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{card.image}}" alt="">
+		</div>
+	</div>
+	
+	<div class="pile2 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile2 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{cardHide(piles.pile2, $index, card)}}" alt="">
+		</div>
+	</div>	
+	
+	<div class="pile3 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile3 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{cardHide(piles.pile3, $index, card)}}" alt="">
+		</div>
+	</div>	
+
+	<div class="pile4 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile4 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{cardHide(piles.pile4, $index, card)}}" alt="">
+		</div>
+	</div>
+
+	<div class="pile5 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile5 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{cardHide(piles.pile5, $index, card)}}" alt="">
+		</div>
+	</div>
+
+	<div class="pile6 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile6 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{cardHide(piles.pile6, $index, card)}}" alt="">
+		</div>
+	</div>
+
+
+	<div class="pile7 pile">
+		<div class="cardContainer" ng-repeat="card in piles.pile7 track by $index" style="top:{{$index * 30}}px">
+			<img ng-src="{{cardHide(piles.pile7, $index, card)}}" alt="">
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
 	<!--<div>
 			<img ng-src="{{pileOne}}" alt="">
 			<div><img ng-src="{{pileTwo}}" alt=""></div>
 		</div>-->
-	<div class="sevenRows">
+	<!--<div class="sevenRows">
 
 
 
@@ -117,5 +176,5 @@
 			</div>
 		</div>
 
-	</div>
+	</div>-->
 </div>
