@@ -6,25 +6,25 @@
 	<title>Solitaire</title>
 	<link rel="stylesheet" href="styles.css">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" type="image/x-icon" href="./app/image/favicon4.ico">
 </head>
 
 <body class="green">
-	<container class="menu">
-		<li>
-			<a ui-sref="home">Home</a>
-			<a ui-sref="game">Game</a>
-			<a ui-sref="high-scores">High Scores</a>
-		</li>
-	</container>
+	
+	<div>
+		<navbar-dir></navbar-dir>
+	</div>
+
 	<div ui-view="" class="views"></div>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 	<script src="./app/app.js"></script>
-	<script src="./app/home/homeCtrl.js"></script>
 	<script src="./app/deck/deckCtrl.js"></script>
 	<script src="./app/deck/deckService.js"></script>
 	<script src="./app/scores/scoreCtrl.js"></script>
+	<script src="./app/navbar/navbarDirective.js"></script>
+	<script src="./app/scores/scoreDirective.js"></script>
 </body>
 
 </html>

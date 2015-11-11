@@ -10,33 +10,22 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		pile1: []
 	};
 
-
-// $("#hide").click(function(){
-//     $("p").hide();
-// });
-
-// $("#show").click(function(){
-//     $("p").show();
-// });
-	// $('#tweet-controls').hide();
-
+	$scope.totalMoves = 0;
 	$scope.shufflePile = [];
 	$scope.revealPile = [];
 	$scope.buttonShow = true;
-
 	$scope.showNewPile = false;
-	// var cardCount = 0;
 
 	$scope.reset = function () {
 		$state.reload();
 		$scope.buttonShow = true;
-		// $('.quit').hide();
-		// $('.deal').show();
+		$scope.enterScore = function() {
+			alert('Enter your name.');
+		};
 	};
 
+
 	$scope.newGame = function () {
-		// $('.quite').hide();
-		// $('.deal').show();
 		$scope.buttonShow = false;
 		$scope.showNewPile = false;
 		deckService.getDeck().then(function (response) {
@@ -60,37 +49,21 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 						$scope.piles.pile1.push(response.data.cards[i]);
 					}
 				}
-				console.log($scope.piles.pile1);
-				console.log($scope.deckId);
-				console.log($scope.piles);
-				
+
+				$scope.cardHide = function (pile, index, card) {
+					console.log();
+					if ((pile.length - 1) === index) {
+						return card.image;
+					} else {
+						return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+					}
+				};
 				deckService.draw($scope.deckId, 24).then(function (response) {
 					$scope.shufflePile = response.data.cards;
 					$scope.revealPile = [];
+					$scope.totalMoves = 0;
 				});
 			});
-			
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row7 = response.data.cards[0].image;
-			// });
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row6 = response.data.cards[0].image;
-			// });
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row5 = response.data.cards[0].image;
-			// });
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row4 = response.data.cards[0].image;
-			// });
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row3 = response.data.cards[0].image;
-			// });
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row2 = response.data.cards[0].image;
-			// });
-			// deckService.drawCard($scope.deckId).then(function(response) {
-			// 	$scope.row1 = response.data.cards[0].image;
-			// });
 		});
 	};
 
@@ -121,40 +94,39 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 			$scope.shufflePile = $scope.shuffle($scope.revealPile);
 			$scope.revealPile = [];
 		}
-		
-		// deckService.drawCard($scope.deckId).then(function (response) {
-		// 	$scope.newPile = response.data.cards[0].image;
-		// 	$scope.showNewPile = true;
-		// 	$scope.cardNum = response.data.remaining;
-		// 	$scope.shufflePile.push(response.data.cards[0]);
-			
-		// 	if($scope.cardNum === 0) {
-		// 		deckService.shufflePile($scope.sufflePile).then(function() {
-						
-		// 		});	
-		// 	}
-			
-		// 	deckService.shufflePile().then(function() {
-		// 		if ($scope.cardNum === 0) {
-		// 			deckService.shuffle($scope.deckId, $scope.cardNum).then(function (response) {
-		// 				$scope.cardShuffle = response;
-		// 				$scope.response.data.remaining = $scope.cardNum;
-		// 				// console.log(response.data.remaining);
-		// 			});
-		// 		}
-		// 	});
-		// });
 	};
-	
-	
-	$scope.cardHide = function (pile, index, card) {
-		console.log();
-		if ((pile.length -1) === index) {
-			return card.image;
-		} else {
-			return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+
+
+	$scope.target = {};
+
+	$scope.moveCards = function (pile, card, index) {
+		// console.log($scope.target);
+		
+		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code) {
+			var cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
+			for (var i = 0; i < cardToMove.length; i++) {
+				pile.push(cardToMove[i]);
+				$scope.totalMoves++;
+			}
+			$scope.target = {};
+		} else if (Object.keys($scope.target).length === 0) {
+			$scope.target = { pile: pile, card: card, index: index };
+		} else if (Object.keys($scope.target).length > 1 && card.code === $scope.target.card.code) {
+			$scope.target = {};
+		}
+		// console.log($scope.piles.pile1);
+	};
+
+	$scope.placeholderClick = function (pile) {
+		if (Object.keys($scope.target).length !== 0) {
+
+			var cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
+			for (var i = 0; i < cardToMove.length; i++) {
+				pile.push(cardToMove[i]);
+			}
+			$scope.target = {};
 		}
 	};
-	
-	
+
+
 });

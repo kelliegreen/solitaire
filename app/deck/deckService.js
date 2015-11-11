@@ -16,20 +16,4 @@ angular.module('solitaire').service('deckService', function ($http) {
                         url: 'http://deckofcardsapi.com/api/deck/' + deckId + '/draw/?count=' + count
                 });
         };
-
-        // this.shuffle = function (deckId) {
-        //         return $http({
-        //                 method: 'GET',
-        //                 url: 'http://deckofcardsapi.com/api/deck/' + deckId + '/shuffle/'
-        //         });
-        // };
-        
-        // this.shufflePartial = function(cards) {
-        //         return $http({
-        //                 method: 'GET',
-        //                 url: 'http://deckofcardsapi.com/api/deck/new/shuffle/',
-        //                 params: cards
-        //         });
-        // };
-        
 });

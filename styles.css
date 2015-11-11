@@ -22,7 +22,6 @@ html, body{
 	position: fixed;
 	padding-top: 13px;
 	font-family: Montserrat;
-	/*margin-bottom: 50px;*/
 }
 
 
@@ -37,7 +36,6 @@ li a {
 
 .title {
 	font-size: 3.5em;
-	/*line-height: 100px;*/
 	margin-top: 15px;
 	margin-bottom: 0px;
 	padding-top: 15px;
@@ -49,7 +47,6 @@ li a {
 	height: 100%;
 	padding: 0px 30px 30px 30px;
 	margin: 0 auto;
-	/*margin-top: 20px;*/
 	margin-bottom: 30px;
 	text-align: center;
 	font-family: Montserrat;
@@ -100,46 +97,9 @@ img, .card {
 }
 
 
-
-
-/*
-.row2 {
-	position: relative;
-	top: -160px;
-	float: right;	
+.placeholder {
+	height: 180px;
+	width: 130px;
+	border: 1px solid black;
+	border-radius: 5px;
 }
-
-.row3 {
-	clear: right;
-	position: relative;
-	top: -320px;
-	float: right;	
-}
-
-.row4 {
-	clear: right;
-	position: relative;
-	top: -480px;
-	float: right;	
-}
-
-.row5 {
-	clear: right;
-	position: relative;
-	top: -640px;
-	float: right;
-}
-
-.row6 {
-	clear: right;
-	position: relative;
-	top: -800px;
-	float: right;
-}
-
-.row7 {
-	clear: right;
-	position: relative;
-	top: -960px;
-	float: right;
-}*/
