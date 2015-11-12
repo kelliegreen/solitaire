@@ -8,6 +8,7 @@
 		Number of Moves: {{totalMoves}}
 	</div>
 	<div class="submitScore">
+		Name:
 		<input ng-model="name"></input>
 		<button ng-click="submit(name, totalMoves)">Submit Score</button>
 	</div>
@@ -19,6 +20,25 @@
 		<div class="showPile" ng-show="revealPile.length > 0">
 			<img ng-src="{{revealPile[(revealPile.length - 1)].image}}" ng-click="moveCards(revealPile, revealPile[(revealPile.length - 1)], revealPile.length - 1)"
 			alt="">
+		</div>
+		
+		<div class="topFour">
+			<div class="first four">
+				<img ng-src="{{fourPiles.fourPile1[(fourPiles.fourPile1.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile1)"
+				class="placeholder">
+			</div>
+			<div class="four">
+				<img ng-src="{{fourPiles.fourPile2[(fourPiles.fourPile2.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile2)"
+				class="placeholder">
+			</div>
+			<div class="four">
+				<img ng-src="{{fourPiles.fourPile3[(fourPiles.fourPile3.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile3)"
+				class="placeholder">
+			</div>
+			<div class="four">
+				<img ng-src="{{fourPiles.fourPile4[(fourPiles.fourPile4.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile4)"
+				class="placeholder">
+			</div>
 		</div>
 	</div>
 

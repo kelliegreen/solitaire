@@ -9,6 +9,12 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		pile2: [],
 		pile1: []
 	};
+	$scope.fourPiles = {
+		fourPile1: [],
+		fourPile2: [],
+		fourPile3: [],
+		fourPile4: []
+	};
 
 	$scope.totalMoves = 0;
 	$scope.shufflePile = [];
@@ -19,9 +25,9 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	$scope.reset = function () {
 		$state.reload();
 		$scope.buttonShow = true;
-		$scope.enterScore = function() {
-			alert('Enter your name.');
-		};
+		// $scope.enterScore = function() {
+		// 	alert('Enter your name.');
+		// };
 	};
 
 
@@ -130,11 +136,11 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 
 	// $scope.quotes = dataService.quotes;
 	
-	$scope.submit = function(name, moves) {
-	 	$scope.name = "";
-	 	scoreService.addScore(name, moves);
+	$scope.submit = function (name, moves) {
+		$scope.name = "";
+		scoreService.addScore(name, moves);
 		$state.go('high-scores');
-	 };
-	 
+	};
+
 
 });

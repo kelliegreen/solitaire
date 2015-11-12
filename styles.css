@@ -68,7 +68,7 @@ button {
 }
 
 .submitScore {
-	margin-left: 670px;
+	margin-left: 825px;
 }
 
 .mainPiles {
@@ -81,6 +81,7 @@ button {
 
 .sevenRows {
 	margin-top: 10px;
+	margin-left: 121px;
 }
 
 img, .card {
@@ -115,4 +116,23 @@ img, .card {
 	width: 130px;
 	/*border: 1px solid black;*/
 	border-radius: 5px;
+}
+
+.topFour .four .placeholder {
+	border: 1px solid gray;
+	height: 180px;
+	width: 130px;
+	margin-right: 8px;
+
+}
+
+.topFour .first .placeholder {
+	margin-left: 289px;
+}
+
+/*scores*/
+
+.scores {
+	line-height: 35px;
+	font-size: 25px;
 }
