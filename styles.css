@@ -34,7 +34,7 @@ li a {
 
 /*How To Play View*/
 
-.title {
+.title, .title2 {
 	font-size: 3.5em;
 	margin-top: 15px;
 	margin-bottom: 0px;
@@ -42,7 +42,7 @@ li a {
 	padding-bottom: 5px;
 }
 
-.how-to-play {
+.how-to-play, .score {
 	width: 70%;
 	height: 100%;
 	padding: 0px 30px 30px 30px;
