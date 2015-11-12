@@ -7,6 +7,10 @@
 		<button ng-click="reset()">Quit</button>
 		Number of Moves: {{totalMoves}}
 	</div>
+	<div>
+		<input ng-model="name"></input>
+		<button ng-click="submit(name, totalMoves)">Submit Score</button>
+	</div>
 	
 	<div>
 		<img ng-click="drawCard()" src="http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg" alt="">

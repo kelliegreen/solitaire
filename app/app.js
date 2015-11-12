@@ -13,7 +13,7 @@ angular.module('solitaire', ['ui.router']).config(function ($stateProvider, $url
 		})
 		.state('high-scores', {
 			url: '/high-scores',
-			template: '<score-dir><>/score-dir',
+			template: '<score-dir></score-dir>',
 			controller: 'scoreCtrl'
 		});
 	$urlRouterProvider.otherwise('/');

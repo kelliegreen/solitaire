@@ -1,4 +1,4 @@
-angular.module('solitaire').controller('deckCtrl', function ($scope, deckService, $state) {
+angular.module('solitaire').controller('deckCtrl', function ($scope, deckService, scoreService, $state) {
 
 	$scope.piles = {
 		pile7: [],
@@ -128,5 +128,14 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		}
 	};
 
+	// $scope.quotes = dataService.quotes;
+	
+	$scope.submit = function(name, moves) {
+	 	$scope.name = "";
+	 	scoreService.addScore(name, moves);
+		$state.go('high-scores');
+		//  console.log(score);
+	 };
+	 
 
 });
