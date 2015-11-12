@@ -7,73 +7,80 @@
 		<button ng-click="reset()">Quit</button>
 		Number of Moves: {{totalMoves}}
 	</div>
-	<div>
+	<div class="submitScore">
 		<input ng-model="name"></input>
 		<button ng-click="submit(name, totalMoves)">Submit Score</button>
 	</div>
-	
-	<div>
+
+	<div class="mainPiles">
 		<img ng-click="drawCard()" src="http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg" alt="">
 		</img>
 
-		<div ng-show="revealPile.length > 0">
-			<img ng-src="{{revealPile[(revealPile.length - 1)].image}}" ng-click="moveCards(revealPile, revealPile[(revealPile.length - 1)], revealPile.length - 1)" alt="">
+		<div class="showPile" ng-show="revealPile.length > 0">
+			<img ng-src="{{revealPile[(revealPile.length - 1)].image}}" ng-click="moveCards(revealPile, revealPile[(revealPile.length - 1)], revealPile.length - 1)"
+			alt="">
 		</div>
 	</div>
 
 
 	<div class="clear"></div>
 
-
-	<div class="pile1 pile">
-		<div ng-click="moveCards(piles.pile1, card, $index)" class="cardContainer" ng-repeat="card in piles.pile1 track by $index"
-		style="top:{{$index * 30}}px">
-			<img ng-src="{{card.image}}" alt="">
+	<div class="sevenRows">
+		<div class="pile1 pile">
+			<div ng-click="moveCards(piles.pile1, card, $index)" class="cardContainer" ng-repeat="card in piles.pile1 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{card.image}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile1)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile1)" class="placeholder"></div>
-	</div>
 
-	<div class="pile2 pile">
-		<div ng-click="moveCards(piles.pile2, card, $index)" class="cardContainer" ng-repeat="card in piles.pile2 track by $index"
-		style="top:{{$index * 30}}px">
-			<img ng-src="{{cardHide(piles.pile2, $index, card)}}" alt="">
+		<div class="pile2 pile">
+			<div ng-click="moveCards(piles.pile2, card, $index)" class="cardContainer" ng-repeat="card in piles.pile2 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{cardHide(piles.pile2, $index, card)}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile2)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile2)" class="placeholder"></div>
-	</div>
 
-	<div class="pile3 pile">
-		<div ng-click="moveCards(piles.pile3, card, $index)" class="cardContainer" ng-repeat="card in piles.pile3 track by $index" style="top:{{$index * 30}}px">
-			<img ng-src="{{cardHide(piles.pile3, $index, card)}}" alt="">
+		<div class="pile3 pile">
+			<div ng-click="moveCards(piles.pile3, card, $index)" class="cardContainer" ng-repeat="card in piles.pile3 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{cardHide(piles.pile3, $index, card)}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile3)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile3)" class="placeholder"></div>
-	</div>
 
-	<div class="pile4 pile">
-		<div ng-click="moveCards(piles.pile4, card, $index)" class="cardContainer" ng-repeat="card in piles.pile4 track by $index" style="top:{{$index * 30}}px">
-			<img ng-src="{{cardHide(piles.pile4, $index, card)}}" alt="">
+		<div class="pile4 pile">
+			<div ng-click="moveCards(piles.pile4, card, $index)" class="cardContainer" ng-repeat="card in piles.pile4 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{cardHide(piles.pile4, $index, card)}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile4)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile4)" class="placeholder"></div>
-	</div>
 
-	<div class="pile5 pile">
-		<div ng-click="moveCards(piles.pile5, card, $index)" class="cardContainer" ng-repeat="card in piles.pile5 track by $index" style="top:{{$index * 30}}px">
-			<img ng-src="{{cardHide(piles.pile5, $index, card)}}" alt="">
+		<div class="pile5 pile">
+			<div ng-click="moveCards(piles.pile5, card, $index)" class="cardContainer" ng-repeat="card in piles.pile5 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{cardHide(piles.pile5, $index, card)}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile5)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile5)" class="placeholder"></div>
-	</div>
 
-	<div class="pile6 pile">
-		<div ng-click="moveCards(piles.pile6, card, $index)" class="cardContainer" ng-repeat="card in piles.pile6 track by $index" style="top:{{$index * 30}}px">
-			<img ng-src="{{cardHide(piles.pile6, $index, card)}}" alt="">
+		<div class="pile6 pile">
+			<div ng-click="moveCards(piles.pile6, card, $index)" class="cardContainer" ng-repeat="card in piles.pile6 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{cardHide(piles.pile6, $index, card)}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile6)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile6)" class="placeholder"></div>
-	</div>
 
 
-	<div class="pile7 pile">
-		<div ng-click="moveCards(piles.pile7, card, $index)" class="cardContainer" ng-repeat="card in piles.pile7 track by $index" style="top:{{$index * 30}}px">
-			<img ng-src="{{cardHide(piles.pile7, $index, card)}}" alt="">
+		<div class="pile7 pile">
+			<div ng-click="moveCards(piles.pile7, card, $index)" class="cardContainer" ng-repeat="card in piles.pile7 track by $index"
+			style="top:{{$index * 30}}px">
+				<img ng-src="{{cardHide(piles.pile7, $index, card)}}" alt="">
+			</div>
+			<div ng-click="placeholderClick(piles.pile7)" class="placeholder"></div>
 		</div>
-		<div ng-click="placeholderClick(piles.pile7)" class="placeholder"></div>
 	</div>
 </div>

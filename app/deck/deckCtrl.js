@@ -134,7 +134,6 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	 	$scope.name = "";
 	 	scoreService.addScore(name, moves);
 		$state.go('high-scores');
-		//  console.log(score);
 	 };
 	 
 

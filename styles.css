@@ -64,11 +64,23 @@ li a {
 
 button {
 	font-family: Montserrat;
+	margin-top: 10px;
 }
 
+.submitScore {
+	margin-left: 670px;
+}
+
+.mainPiles {
+	margin-top: 30px;
+}
+
+/*.showPile {
+	margin-left: 30px;
+}*/
+
 .sevenRows {
-	width: 910px;
-	clear: left;
+	margin-top: 10px;
 }
 
 img, .card {
@@ -91,6 +103,7 @@ img, .card {
 
 .pile {
 	position: relative;
+	margin-left: 10px;
 	width: 130px;
 	height: 180px;
 	float: left;
@@ -100,6 +113,6 @@ img, .card {
 .placeholder {
 	height: 180px;
 	width: 130px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	border-radius: 5px;
 }
