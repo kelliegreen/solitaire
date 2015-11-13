@@ -1,18 +1,18 @@
 <div class="entireGame">
 	<div>
-	<div ng-show="buttonShow">
-		<button ng-click="newGame()">
-			Deal</button>
-	</div>
-	<div ng-show="!buttonShow">
-		<button ng-click="reset()">Quit</button> 
-		Number of Moves: {{totalMoves}}
-		<div class="submitScore">
-			Name:
-			<input ng-model="name"></input>
-			<button ng-click="submit(name, totalMoves)">Submit Score</button>
+		<div ng-show="buttonShow">
+			<button ng-click="newGame()">
+				Deal</button>
 		</div>
-	</div>
+		<div ng-show="!buttonShow">
+			<button ng-click="reset()">Quit</button>
+			Number of Moves: {{totalMoves}}
+			<div class="submitScore">
+				Name:
+				<input ng-model="name"></input>
+				<button ng-click="submit(name, totalMoves)">Submit Score</button>
+			</div>
+		</div>
 	</div>
 
 	<div class="mainPiles">
@@ -59,8 +59,9 @@
 		<div class="pile2 pile">
 			<div ng-click="moveCards(piles.pile2, card, $index)" class="cardContainer" ng-repeat="card in piles.pile2 track by $index"
 			style="top:{{$index * 30}}px">
-				<img ng-src="{{cardHide(piles.pile2, $index, card)}}" alt="">
-			</div>
+				<!--<div ng-show="showCard"><img ng-src="{{card.image}}" alt=""></div>-->
+				<img ng-src="{{cardHide(piles.pile2, $index, card)}}" alt=""></div>
+			
 			<div ng-click="placeholderClick(piles.pile2)" class="placeholder"></div>
 		</div>
 

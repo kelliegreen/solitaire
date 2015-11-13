@@ -53,15 +53,23 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 					}
 				}
 
-				$scope.cardHide = function (pile, index, card) {
-					console.log();
-					if ((pile.length - 1) === index) {
-						return card.image;
-					} else {
-						return card.image;
-						// return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
-					}
-				};
+				// $scope.cardHide = function (pile, index, card) {
+				// 	console.log();
+				// 	if ((pile.length - 1) === index) {
+				// 		$scope.showCard = true;
+				// 		return;
+				// 	} else {
+				// 		$scope.showCard = false;
+				// 		return;
+				
+				// return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+				// 	}
+				// };
+				
+				
+				
+				
+				
 				// $scope.cardHide = function (pile, index, card) {
 				// 	if ((pile.length - 1) === index) {
 				// 			index.image = card.image;
@@ -113,16 +121,16 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		// console.log($scope.shufflePile.length);
 	};
 
-	// $scope.clickHide = function(piles, card, index) {
-	// 		$scope.cardHide = function (pile, index, card) {
-	// 					if ((pile.length - 1) === index) {
-	// 						return card.image;
-	// 					} else {
-	// 						return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
-	// 	}
-	// 	return;
-	// };
-	// };
+
+	$scope.cardHide = function (pile, index, card) {
+		if (card.flipped || (pile.length - 1) === index) {
+			return card.image;
+		} else {
+			return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+		}
+		return;
+	};
+
 
 	$scope.target = {};
 
@@ -171,6 +179,9 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 
 
 	$scope.moveCards = function (pile, card, index) {
+		// if (pile[index]) {
+		// 	$scope.showCard = true;
+		// }
 		if (pile[index].value === "JACK") {
 			pile[index].value = 11;
 		}
@@ -184,8 +195,13 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 			pile[index].value = 1;
 		}
 		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code && parseInt($scope.target.card.value) + 1 == pile[index].value) {
+			pile[index].flipped = true;
+			
 
 			$scope.cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
+			// if($scope.target.pile.index.image === "http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg") {
+			// 	$scope.showCard = true;
+			// } 
 			for (var i = 0; i < $scope.cardToMove.length; i++) {
 				pile.push($scope.cardToMove[i]);
 				$scope.totalMoves++;
