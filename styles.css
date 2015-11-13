@@ -68,9 +68,9 @@ button {
 	margin-top: 10px;
 }
 
-.moves {
 
-
+.showPile {
+	/*margin-left: 5px;*/
 }
 
 .submitScore {
@@ -93,6 +93,7 @@ img, .card {
 	height: 180px;
 	border-radius: 5px;
 	float: left;
+	margin-right: 5px;
 }
 
 .clear {
@@ -126,7 +127,7 @@ img, .card {
 	border: 1px solid gray;
 	height: 180px;
 	width: 130px;
-	margin-left: 8px;
+	margin-left: 3px;
 	float: right;
 
 }
