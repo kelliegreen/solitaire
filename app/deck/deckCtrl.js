@@ -25,9 +25,6 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	$scope.reset = function () {
 		$state.reload();
 		$scope.buttonShow = true;
-		// $scope.enterScore = function() {
-		// 	alert('Enter your name.');
-		// };
 	};
 
 
@@ -61,11 +58,24 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 					if ((pile.length - 1) === index) {
 						return card.image;
 					} else {
-						return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+						return card.image;
+						// return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
 					}
 				};
+				// $scope.cardHide = function (pile, index, card) {
+				// 	if ((pile.length - 1) === index) {
+				// 			index.image = card.image;
+				// 			$scope.cardHide = false;
+				// 		// return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+				// 	// } else if (pile[index].image === card.image) {
+				// 	// 	return card.image;
+				// 	}else {
+				// 		return card.image;
+				// 	} 
+				// };
 				deckService.draw($scope.deckId, 24).then(function (response) {
 					$scope.shufflePile = response.data.cards;
+					// console.log($scope.shufflePile.length);
 					$scope.revealPile = [];
 					$scope.totalMoves = 0;
 				});
@@ -100,32 +110,25 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 			$scope.shufflePile = $scope.shuffle($scope.revealPile);
 			$scope.revealPile = [];
 		}
+		// console.log($scope.shufflePile.length);
 	};
 
+	// $scope.clickHide = function(piles, card, index) {
+	// 		$scope.cardHide = function (pile, index, card) {
+	// 					if ((pile.length - 1) === index) {
+	// 						return card.image;
+	// 					} else {
+	// 						return 'http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg';
+	// 	}
+	// 	return;
+	// };
+	// };
 
 	$scope.target = {};
 
-	$scope.moveCards = function (pile, card, index) {
-		// console.log($scope.target);
-		
-		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code) {
-			var cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
-			for (var i = 0; i < cardToMove.length; i++) {
-				pile.push(cardToMove[i]);
-				$scope.totalMoves++;
-			}
-			$scope.target = {};
-		} else if (Object.keys($scope.target).length === 0) {
-			$scope.target = { pile: pile, card: card, index: index };
-		} else if (Object.keys($scope.target).length > 1 && card.code === $scope.target.card.code) {
-			$scope.target = {};
-		}
-		// console.log($scope.piles.pile1);
-	};
 
 	$scope.placeholderClick = function (pile) {
 		if (Object.keys($scope.target).length !== 0) {
-
 			var cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
 			for (var i = 0; i < cardToMove.length; i++) {
 				pile.push(cardToMove[i]);
@@ -134,8 +137,32 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		}
 	};
 
-	// $scope.quotes = dataService.quotes;
-	
+	$scope.pileCount = 0;
+
+	$scope.placeholderClick2 = function (pile, index) {
+		if (pile.length === undefined) {
+			pile.length = 0;
+		}
+
+		if (Object.keys($scope.target).length !== 0 && pile.length === parseInt($scope.target.card.value) - 1) {
+			var cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
+			for (var i = 0; i < cardToMove.length; i++) {
+				pile.push(cardToMove[i]);
+			}
+			$scope.target = {};
+			$scope.totalMoves++;
+			$scope.pileCount++;
+		} else {
+			$scope.target = {};
+		}
+		if ($scope.pileCount > 51) {
+			alert('You Win!');
+		}
+		console.log($scope.pileCount);
+
+	};
+
+
 	$scope.submit = function (name, moves) {
 		$scope.name = "";
 		scoreService.addScore(name, moves);
@@ -143,4 +170,33 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	};
 
 
+	$scope.moveCards = function (pile, card, index) {
+		if (pile[index].value === "JACK") {
+			pile[index].value = 11;
+		}
+		if (pile[index].value === "QUEEN") {
+			pile[index].value = 12;
+		}
+		if (pile[index].value === "KING") {
+			pile[index].value = 13;
+		}
+		if (pile[index].value === "ACE") {
+			pile[index].value = 1;
+		}
+		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code && parseInt($scope.target.card.value) + 1 == pile[index].value) {
+
+			$scope.cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
+			for (var i = 0; i < $scope.cardToMove.length; i++) {
+				pile.push($scope.cardToMove[i]);
+				$scope.totalMoves++;
+			}
+			$scope.target = {};
+		} else if (Object.keys($scope.target).length === 0) {
+			$scope.target = { pile: pile, card: card, index: index };
+		} else if (Object.keys($scope.target).length > 1 && card.code === $scope.target.card.code) {
+			$scope.target = {};
+		} else {
+			$scope.target = {};
+		}
+	};
 });

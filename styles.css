@@ -59,6 +59,7 @@ li a {
 .entireGame {
 	margin-left: 20px;
 	height: 700px;	
+	font-family: Montserrat;
 }
 
 
@@ -67,21 +68,24 @@ button {
 	margin-top: 10px;
 }
 
+.moves {
+
+
+}
+
 .submitScore {
-	margin-left: 825px;
+	margin-right: 50px;
+	float: right;
 }
 
 .mainPiles {
 	margin-top: 30px;
 }
 
-/*.showPile {
-	margin-left: 30px;
-}*/
-
 .sevenRows {
 	margin-top: 10px;
-	margin-left: 121px;
+	float: right;
+	margin-right: 50px;
 }
 
 img, .card {
@@ -122,12 +126,14 @@ img, .card {
 	border: 1px solid gray;
 	height: 180px;
 	width: 130px;
-	margin-right: 8px;
+	margin-left: 8px;
+	float: right;
 
 }
 
 .topFour .first .placeholder {
-	margin-left: 289px;
+	margin-right: 50px;
+	
 }
 
 /*scores*/

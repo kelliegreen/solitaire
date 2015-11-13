@@ -1,16 +1,18 @@
 <div class="entireGame">
+	<div>
 	<div ng-show="buttonShow">
 		<button ng-click="newGame()">
 			Deal</button>
 	</div>
 	<div ng-show="!buttonShow">
-		<button ng-click="reset()">Quit</button>
+		<button ng-click="reset()">Quit</button> 
 		Number of Moves: {{totalMoves}}
+		<div class="submitScore">
+			Name:
+			<input ng-model="name"></input>
+			<button ng-click="submit(name, totalMoves)">Submit Score</button>
+		</div>
 	</div>
-	<div class="submitScore">
-		Name:
-		<input ng-model="name"></input>
-		<button ng-click="submit(name, totalMoves)">Submit Score</button>
 	</div>
 
 	<div class="mainPiles">
@@ -21,22 +23,22 @@
 			<img ng-src="{{revealPile[(revealPile.length - 1)].image}}" ng-click="moveCards(revealPile, revealPile[(revealPile.length - 1)], revealPile.length - 1)"
 			alt="">
 		</div>
-		
+
 		<div class="topFour">
 			<div class="first four">
-				<img ng-src="{{fourPiles.fourPile1[(fourPiles.fourPile1.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile1)"
+				<img ng-src="{{fourPiles.fourPile1[(fourPiles.fourPile1.length - 1)].image}}" ng-click="placeholderClick2(fourPiles.fourPile1, $index)"
 				class="placeholder">
 			</div>
 			<div class="four">
-				<img ng-src="{{fourPiles.fourPile2[(fourPiles.fourPile2.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile2)"
+				<img ng-src="{{fourPiles.fourPile2[(fourPiles.fourPile2.length - 1)].image}}" ng-click="placeholderClick2(fourPiles.fourPile2, $index)"
 				class="placeholder">
 			</div>
 			<div class="four">
-				<img ng-src="{{fourPiles.fourPile3[(fourPiles.fourPile3.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile3)"
+				<img ng-src="{{fourPiles.fourPile3[(fourPiles.fourPile3.length - 1)].image}}" ng-click="placeholderClick2(fourPiles.fourPile3, $index)"
 				class="placeholder">
 			</div>
 			<div class="four">
-				<img ng-src="{{fourPiles.fourPile4[(fourPiles.fourPile4.length - 1)].image}}" ng-click="placeholderClick(fourPiles.fourPile4)"
+				<img ng-src="{{fourPiles.fourPile4[(fourPiles.fourPile4.length - 1)].image}}" ng-click="placeholderClick2(fourPiles.fourPile4, $index)"
 				class="placeholder">
 			</div>
 		</div>
