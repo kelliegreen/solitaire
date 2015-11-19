@@ -7,7 +7,7 @@
 		<div ng-show="!buttonShow">
 			<button ng-click="reset()">Quit</button>
 			Number of Moves: {{totalMoves}}
-			<div class="submitScore">
+			<div ng-show="submitShow" class="submitScore">
 				Name:
 				<input ng-model="name"></input>
 				<button ng-click="submit(name, totalMoves)">Submit Score</button>

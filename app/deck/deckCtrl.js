@@ -21,6 +21,7 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	$scope.revealPile = [];
 	$scope.buttonShow = true;
 	$scope.showNewPile = false;
+	$scope.submitShow = false;
 
 	$scope.reset = function () {
 		$state.reload();
@@ -132,7 +133,6 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	};
 
 
-	$scope.target = {};
 
 
 	$scope.placeholderClick = function (pile) {
@@ -165,6 +165,7 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		}
 		if ($scope.pileCount > 51) {
 			alert('You Win!');
+			$scope.submitShow = true;
 		}
 		console.log($scope.pileCount);
 
@@ -177,6 +178,7 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		$state.go('high-scores');
 	};
 
+	$scope.target = {};
 
 	$scope.moveCards = function (pile, card, index) {
 		// if (pile[index]) {
@@ -194,14 +196,12 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		if (pile[index].value === "ACE") {
 			pile[index].value = 1;
 		}
-		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code && parseInt($scope.target.card.value) + 1 == pile[index].value) {
+		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code && parseInt($scope.target.card.value) + 1 == pile[index].value && pile !== $scope.revealPile) {
 			pile[index].flipped = true;
 			
 
 			$scope.cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
-			// if($scope.target.pile.index.image === "http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg") {
-			// 	$scope.showCard = true;
-			// } 
+
 			for (var i = 0; i < $scope.cardToMove.length; i++) {
 				pile.push($scope.cardToMove[i]);
 				$scope.totalMoves++;
