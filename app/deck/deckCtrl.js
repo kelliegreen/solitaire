@@ -22,6 +22,8 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	$scope.buttonShow = true;
 	$scope.showNewPile = false;
 	$scope.submitShow = false;
+  $scope.previousCard = false;
+	// $scope.isActive = false;
 
 	$scope.reset = function () {
 		$state.reload();
@@ -181,9 +183,22 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 	$scope.target = {};
 
 	$scope.moveCards = function (pile, card, index) {
+    // console.log(card);
+    // card.style.border = "1px solid red";
+		// if card is active
+			// card is not active
+		// else
+			// card is active		
 		// if (pile[index]) {
 		// 	$scope.showCard = true;
 		// }
+    
+    if($scope.previousCard) {
+      $scope.previousCard.isActive = false;
+    }
+    card.isActive = true;
+    $scope.previousCard = card;
+    
 		if (pile[index].value === "JACK") {
 			pile[index].value = 11;
 		}
@@ -198,21 +213,23 @@ angular.module('solitaire').controller('deckCtrl', function ($scope, deckService
 		}
 		if (Object.keys($scope.target).length !== 0 && card.code !== $scope.target.card.code && parseInt($scope.target.card.value) + 1 == pile[index].value && pile !== $scope.revealPile) {
 			pile[index].flipped = true;
-			
+			// card.isActive = true;
 
 			$scope.cardToMove = $scope.target.pile.splice($scope.target.index, $scope.target.pile.length + 1);
-
 			for (var i = 0; i < $scope.cardToMove.length; i++) {
 				pile.push($scope.cardToMove[i]);
 				$scope.totalMoves++;
 			}
 			$scope.target = {};
+      card.isActive = false;
 		} else if (Object.keys($scope.target).length === 0) {
 			$scope.target = { pile: pile, card: card, index: index };
 		} else if (Object.keys($scope.target).length > 1 && card.code === $scope.target.card.code) {
 			$scope.target = {};
+      card.isActive = false;
 		} else {
 			$scope.target = {};
+      card.isActive = false;
 		}
 	};
 });

@@ -69,9 +69,9 @@ button {
 }
 
 
-.showPile {
-	/*margin-left: 5px;*/
-}
+/*.showPile {
+	margin-left: 5px;
+}*/
 
 .submitScore {
 	margin-right: 50px;
@@ -82,6 +82,7 @@ button {
 	margin-top: 30px;
 }
 
+
 .sevenRows {
 	margin-top: 10px;
 	float: right;
@@ -91,9 +92,10 @@ button {
 img, .card {
 	width: 130px;
 	height: 180px;
-	border-radius: 5px;
+	border-radius: 8px;
 	float: left;
 	margin-right: 5px;
+	/*border: 1px solid red;*/
 }
 
 .clear {
@@ -105,6 +107,14 @@ img, .card {
 .cardContainer {
 	position: absolute;
 	
+}
+
+.cardContainer img, .showPile img {
+  border: 2px solid transparent;
+}
+
+.cardContainer img.active, .showPile img.active {
+  border: 2px solid red;
 }
 
 .pile {
@@ -121,6 +131,8 @@ img, .card {
 	width: 128px;
 	border: 1px solid #C0C0C0;
 	border-radius: 6px;
+  margin-left: 2px;
+  margin-top: 2px;
 }
 
 .topFour .four .placeholder {
